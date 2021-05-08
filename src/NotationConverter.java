@@ -3,9 +3,9 @@ import java.util.Map;
 
 public class NotationConverter {
 
-    public static int toArabic(String romanNotation) throws InvalidValueException{
+    public int toArabic(String romanNotation) throws InvalidValueException{
         if (romanNotation == null || romanNotation.equals("")){
-            throw new InvalidValueException("String must contain only valid roman numerals");
+            throw new InvalidValueException("String must contain only valid roman numerals [I, V, X, L, C, D, M]");
         }
 
         Map<Character,Integer> romanMap = new HashMap<>();
@@ -20,7 +20,7 @@ public class NotationConverter {
         int result = 0;
         for (int i = 0; i < romanNotation.length(); i++) {
             if (!romanMap.containsKey(romanNotation.charAt(i))){
-                throw new InvalidValueException("String must contain only valid roman numerals");
+                throw new InvalidValueException("String must contain only valid roman numerals [I, V, X, L, C, D, M]");
             }
             if (i>0 && romanMap.get(romanNotation.charAt(i)) > romanMap.get(romanNotation.charAt(i-1))){
                 //если за числом следует большее значение мы вычитаем его дважды т.к. мы его в блоке else уже сложили
